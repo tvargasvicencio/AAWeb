@@ -1,0 +1,57 @@
+<?php
+
+namespace sitePageBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductLine
+ *
+ * @ORM\Table(name="product_line", indexes={@ORM\Index(name="fk_product_line_shop1_idx", columns={"shop_id"})})
+ * @ORM\Entity
+ */
+class ProductLine
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_product_line", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idProductLine;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=45, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=250, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="principal_image", type="string", length=60, nullable=false)
+     */
+    private $principalImage;
+
+    /**
+     * @var \Shop
+     *
+     * @ORM\ManyToOne(targetEntity="Shop")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="shop_id", referencedColumnName="id_shop")
+     * })
+     */
+    private $shop;
+
+
+}
+

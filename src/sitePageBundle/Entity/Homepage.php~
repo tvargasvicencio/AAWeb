@@ -1,0 +1,92 @@
+<?php
+
+namespace sitePageBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Homepage
+ *
+ * @ORM\Table(name="homepage", indexes={@ORM\Index(name="fk_homepage_shop1_idx", columns={"shop_id"})})
+ * @ORM\Entity
+ */
+class Homepage
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_homepage", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idHomepage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="menu_color", type="string", length=7, nullable=false)
+     */
+    private $menuColor = '#222';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title_color", type="string", length=7, nullable=false)
+     */
+    private $titleColor = '#fff';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="font_color", type="string", length=7, nullable=false)
+     */
+    private $fontColor = '#333';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="background_color", type="string", length=7, nullable=false)
+     */
+    private $backgroundColor = '#fff';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=60, nullable=false)
+     */
+    private $image = 'principal1.jpg';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ci_button_color", type="string", length=45, nullable=false)
+     */
+    private $ciButtonColor = '#fff';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ci_button_font_color", type="string", length=45, nullable=false)
+     */
+    private $ciButtonFontColor = '#333';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="template", type="string", length=45, nullable=false)
+     */
+    private $template = 'template1.html.twig';
+
+    /**
+     * @var \Shop
+     *
+     * @ORM\ManyToOne(targetEntity="Shop")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="shop_id", referencedColumnName="id_shop")
+     * })
+     */
+    private $shop;
+
+
+}
+
