@@ -1,3 +1,7 @@
+login:
+    resource: "@loginBundle/Resources/config/routing.php"
+    prefix:   /
+
 dashboard:
     resource: "@dashboardBundle/Resources/config/routing.php"
     prefix:   /

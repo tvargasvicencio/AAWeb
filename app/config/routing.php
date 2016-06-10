@@ -14,5 +14,9 @@ $collection->addCollection(
     $loader->import('@dashboardBundle/Resources/config/routing.php'),
     '/'
 );
+$collection->addCollection(
+    $loader->import('@loginBundle/Resources/config/routing.php'),
+    '/'
+);
  
 return $collection;
