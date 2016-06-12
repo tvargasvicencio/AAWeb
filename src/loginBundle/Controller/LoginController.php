@@ -14,6 +14,9 @@ class LoginController extends Controller
     public function indexAction(Request $request)
     {
     	$session = $request->getSession();
+        $em = $this->getDoctrine()->getManager();
+        $Shop = $em->getRepository('sitePageBundle:Shop')->findOneBy(array('idShop' => '1'));
+        $Homepage = $em->getRepository('sitePageBundle:Homepage')->findOneBy(array('shop' => $Shop ));
 
     	//obtener, si existe, el error producido en el último intento de login
     	if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)){
@@ -27,7 +30,9 @@ class LoginController extends Controller
 
         return $this->render('loginBundle:Default:index.html.twig', array(
         	'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-        	'error'			=> $error
+        	'error'			=> $error,
+            'Homepage'      => $Homepage,
+            'Shop' => $Shop
         ));
     }
 }

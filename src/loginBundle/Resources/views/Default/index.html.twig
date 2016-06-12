@@ -1,24 +1,60 @@
-{% extends '::baseLogin.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login {{ Shop.title }}</title>
+        <meta charset="utf-8">
+        <link href="{{ asset('css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="{{ asset('js/login.js')}}"></script> 
+    </head>
+    <body>
 
-{% block title %} Login {% endblock %}
+	<div class="container">    
+	    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+	        <div class="panel panel-info" >
+	            <div class="panel-heading">
+	                <div class="panel-title">Login {{ Shop.title }}</div>
+	            </div>     
 
-{% block body %}
-<div id="loginwrap">
-            {% if error %}
-                <div class="error">{{ error.message|trans({},'Usuario o Contraseña incorrectos') }}</div>
-            {% endif %}
-        <div id="login">
-            <form class="form-container" action="{{ path('login_check') }}" method="post">
-                <div class="form-title"><h2>Bienvenido</h2></div>
-                <div class="form-title">Usuario</div>
-                <input class="form-field" type="text" name="_username" value="{{ last_username }}"/><br />
-                <div class="form-title">Contraseña</div>
-                <input class="form-field" type="password" name="_password" /><br />
-                <div class="submit-container">
-                    <input class="boton" type="submit" value="Ingresar" />
-                </div>
-            </form>
-        </div>
-    </div>
-{% endblock %}
-	
+	            <div style="padding-top:30px" class="panel-body" >
+	            	<img class="img-responsive" src="img/{{ Homepage.image }}" alt="" height="50%" width="50%" style="margin-left:25%; margin-bottom:3%">
+	            	{% if error %}
+	                    <div id="signupalert" class="alert alert-danger">
+                            <span>Error: {{ error.message|trans({},'Usuario o Contraseña incorrectos') }}</span>
+                        </div>
+	                {% endif %}
+	                    
+	                <form id="loginform" class="form-horizontal" action="{{ path('login_check') }}" method="post">
+
+	                    <div style="margin-bottom: 25px" class="input-group">
+	                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	                        <input id="login-username" type="text" class="form-control" name="_username" value="{{ last_username }}" placeholder="Usuario">                                        
+	                    </div>
+	                        
+	                    <div style="margin-bottom: 25px" class="input-group">
+	                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+	                        <input id="login-password" type="password" class="form-control" name="_password" placeholder="Contraseña">
+	                    </div>
+
+	                    <div style="margin-top:10px" class="form-group">
+	                        <!-- Button -->
+	                        <div class="col-sm-12 controls">
+	                          <input id="btn-login" class="btn btn-success" type="submit" value="Login" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <div class="col-md-12 control">
+	                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+	                                <p style="text-align:center">Melombus 2016</p>
+	                            </div>
+	                        </div>
+	                    </div>    
+	                </form>
+	            </div>                     
+	        </div>  
+	    </div>
+	</div>
+
+    </body>
+</html>
+
